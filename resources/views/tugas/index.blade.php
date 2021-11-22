@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<title>Tutorial Membuat CRUD Pada Laravel - www.malasngoding.com</title>
 </head>
+<style>
+    body{
+        background-image: url(images/background2.jpg);
+    }
+    a:
+</style>
 <body>
-
-	<h2>www.malasngoding.com</h2>
-	<h3>Data Tugas</h3>
+    <div class="container mt-3">
+	<h1>Data Tugas</h1>
 
 	<a href="/tugas/tambah"> + Tambah Tugas Baru</a>
 
 	<br/>
 	<br/>
 
-	<table border="1">
+	<table border="1" class="table table-dark table-striped">
 		<tr>
 			<th>ID Pegawai</th>
 			<th>Tanggal</th>
@@ -33,9 +39,10 @@
 				<a href="/tugas/hapus/{{ $p->id }}">Hapus</a>
 			</td>
 		</tr>
+
 		@endforeach
 	</table>
-
+    </div>
 
 </body>
 </html>
