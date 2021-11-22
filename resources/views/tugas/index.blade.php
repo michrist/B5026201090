@@ -8,7 +8,6 @@
     body{
         background-image: url(images/background2.jpg);
     }
-    a:
 </style>
 <body>
     <div class="container mt-3">
