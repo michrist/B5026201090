@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<title>Tutorial Membuat CRUD Pada Laravel - www.malasngoding.com</title>
-</head>
-<style>
-    body{
-        background-image: url(images/background2.jpg);
-    }
-</style>
-<body>
-    <div class="container mt-3">
-	<h1>Data Tugas</h1>
+@extends('layout.ceria')
+@section('title', 'Tugas Pegawai')
+@section('isikonten')
+@section('judulhalaman', 'Data Tugas')
 
-	<a href="/tugas/tambah"> + Tambah Tugas Baru</a>
-
+        <br>
+        <a href="/tugas/tambah" class="btn btn-primary" > + Tambah Tugas Baru</a>
 	<br/>
 	<br/>
 
-	<table border="1" class="table table-dark table-striped">
+	<table class="table table-dark table-striped">
 		<tr>
 			<th>ID Pegawai</th>
 			<th>Tanggal</th>
@@ -33,15 +23,13 @@
 			<td>{{ $p->namatugas }}</td>
 			<td>{{ $p->status }}</td>
 			<td>
-				<a href="/tugas/edit/{{ $p->id }}">Edit</a>
+				<a href="/tugas/edit/{{ $p->id }}" class="btn btn-warning">Edit</a>
 				|
-				<a href="/tugas/hapus/{{ $p->id }}">Hapus</a>
+				<a href="/tugas/hapus/{{ $p->id }}" class="btn btn-danger">Hapus</a>
 			</td>
 		</tr>
 
 		@endforeach
 	</table>
     </div>
-
-</body>
-</html>
+    @endsection

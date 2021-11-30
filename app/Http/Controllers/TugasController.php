@@ -21,7 +21,8 @@ class TugasController extends Controller
     {
 
         // memanggil view tambah
-        return view('tugas.tambah');
+        $pegawai = DB::table('pegawai')->orderBy('pegawai_nama', 'asc')->get();
+        return view('tugas.tambah', ['pegawai' => $pegawai]);
 
     }
         // method untuk insert data ke table pegawai
@@ -43,8 +44,9 @@ class TugasController extends Controller
     {
         // mengambil data pegawai berdasarkan id yang dipilih
         $tugas = DB::table('tugas')->where('id',$id)->get();
+        $pegawai = DB::table('pegawai')->orderBy('pegawai_nama', 'asc')->get();
         // passing data pegawai yang didapat ke view edit.blade.php
-        return view('tugas.edit',['tugas' => $tugas]);
+        return view('tugas.edit',['tugas' => $tugas,'pegawai' => $pegawai]);
 
     }
     public function update(Request $request)

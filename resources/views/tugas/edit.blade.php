@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<title>Tutorial Membuat CRUD Pada Laravel - www.malasngoding.com</title>
-</head>
+@extends('layout.ceria')
+@section('title', 'Edit Tugas Pegawai')
+@section('isikonten')
+@section('judulhalaman', 'Edit Tugas')
 
-<body>
-    <div class="container mt-3">
-	<h3>Edit Tugas</h3>
-
-	<a href="/tugas"> Kembali</a>
+    <br>
+    <a href="/tugas" class="btn btn-primary"> Kembali</a>
 
 	<br/>
 	<br/>
@@ -18,15 +13,35 @@
 	<form action="/tugas/update" method="post">
 		{{ csrf_field() }}
 		<input type="hidden" name="id" value="{{ $p->id }}"> <br/>
-		ID Pegawai <input class="form-control" type="number" required="required" name="IDPegawai" value="{{ $p->idpegawai }}"> <br/>
-		Tanggal <input class="form-control" type="datetime" required="required" name="Tanggal" value="{{ $p->tanggal }}"> <br/>
+		Pegawai <select class="form-control mt-2" id="IDPegawai" name="IDPegawai" required="required">
+            @foreach($pegawai as $peg)
+                <option value="{{ $peg->pegawai_id }}" @if ($peg->pegawai_id === $p->idpegawai) selected="selected" @endif> {{ $peg->pegawai_nama }}</option>
+            @endforeach
+        </select><br>
+        <div class="form-group">
+            <label for="datetimepicker" class="control-label">Tanggal </label>
+                <div class=' input-group date ' id='datetimepicker'>
+                    <input type='text' required="required" class="form-control" name="Tanggal" />
+                    <span class="input-group-addon input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                    </span>
+                </div>
+            </div>
 		Nama Tugas <input class="form-control" type="text" required="required" name="NamaTugas" value="{{ $p->namatugas }}"> <br/>
-		Status <input class="form-control" type="text" required="required" name="Status" value="{{$p->status }}">  <br/>
-		<input type="submit" value="Simpan Data">
+		Status
+        <div class="form-check mt-2">
+            <input type="radio" class="form-check-input" id="inprog" name="Status" value="I" @if ($p->status === "I") checked="checked" @endif>
+            <label for="inprog">In Progress</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" id="finished" name="Status" value="F" @if ($p->status === "F") checked="checked" @endif>
+            <label for="finished">Finished</label><br>
+        </div>
+        <div class="text-center">
+		    <input class="btn btn-primary" type="submit"  value="Simpan Data">
+        </div>
 	</form>
 	@endforeach
     </div>
 
-
-</body>
-</html>
+@endsection
