@@ -7,10 +7,21 @@
         <a href="/tugas/tambah" class="btn btn-primary" > + Tambah Tugas Baru</a>
 	<br/>
 	<br/>
-
+    <h5>Cari Data Tugas :</h5>
+    <form action="/tugas/cari" method="GET">
+        <div class="row">
+            <div class="col-8">
+                <input class="form-control mt-2" type="text" name="cari" placeholder="Cari Tugas .." value="{{ old('cari') }}">
+            </div>
+            <div>
+                <input class="btn btn-primary mt-2" type="submit" value="CARI">
+            </div>
+        </div>
+    </form> <br>
 	<table class="table table-dark table-striped">
 		<tr>
-			<th>ID Pegawai</th>
+            <th>No</th>
+			<th>Nama Pegawai</th>
 			<th>Tanggal</th>
 			<th>Nama Tugas</th>
 			<th>Status</th>
@@ -18,7 +29,8 @@
 		</tr>
 		@foreach($tugas as $p)
 		<tr>
-			<td>{{ $p->idpegawai }}</td>
+            <td>{{ $loop->iteration}}</td>
+			<td>{{ $p->pegawai_nama }}</td>
 			<td>{{ $p->tanggal  }}</td>
 			<td>{{ $p->namatugas }}</td>
 			<td>{{ $p->status }}</td>
@@ -31,5 +43,8 @@
 
 		@endforeach
 	</table>
+
+    {{ $tugas->links() }}
+
     </div>
     @endsection

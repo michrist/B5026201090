@@ -11,17 +11,29 @@
 
 	<br/>
 	<br/>
-
+    <h5>Cari Data absen :</h5>
+    <form action="/absen/cari" method="GET">
+        <div class="row">
+            <div class="col-8">
+                <input class="form-control mt-2" type="text" name="cari" placeholder="Cari Absen .." value="{{ old('cari') }}">
+            </div>
+            <div>
+                <input class="btn btn-primary mt-2" type="submit" value="CARI">
+            </div>
+        </div>
+    </form> <br>
 	<table class="table table-dark table-striped">
 		<tr>
-			<th>ID Pegawai</th>
+            <th>No</th>
+			<th>Nama Pegawai</th>
 			<th>Tanggal</th>
 			<th>Status</th>
 			<th>Opsi</th>
 		</tr>
 		@foreach($absen as $p)
 		<tr>
-			<td>{{ $p->IDPegawai }}</td>
+            <td>{{ $loop->iteration}}</td>
+			<td>{{ $p->pegawai_nama }}</td>
 			<td>{{ $p->Tanggal }}</td>
 			<td>{{ $p->Status }}</td>
 			<td>
@@ -32,4 +44,7 @@
 		</tr>
 		@endforeach
 	</table>
+
+    {{ $absen->links() }}
+
     @endsection
