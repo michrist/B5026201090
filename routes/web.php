@@ -63,3 +63,8 @@ Route::post('/vga/update','VGAController@update');
 Route::get('/vga/hapus/{id}','VGAController@hapus');
 Route::get('/vga/cari','VGAController@cari');
 Route::get('/vga/detail/{id}','VGAController@view');
+
+//route CRUD
+Route::get('/nilaikuliah','nilaikuliahController@index');
+Route::get('/nilaikuliah/tambah','nilaikuliahController@tambah');
+Route::post('/nilaikuliah/store','nilaikuliahController@store');
